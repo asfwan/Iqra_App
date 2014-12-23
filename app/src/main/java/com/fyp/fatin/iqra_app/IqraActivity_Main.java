@@ -31,22 +31,16 @@ public class IqraActivity_Main extends IqraActivity_Core {
                             showImageDialog(R.drawable.ba);
                             playSound(R.raw.baa);
                             v.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.doroba_ba_red));
-                            // v.setImageBitmap(getHighlightedImageBitmap(IqraActivity_Main.this, R.drawable.doroba,
-                            // ImageSettings.left_bound, ImageSettings.top_bound, ImageSettings.right_bound, ImageSettings.bottom_bound));
                             break;
                         case 2:
                             showImageDialog(R.drawable.ro);
                             playSound(R.raw.raa);
                             v.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.doroba_ro_red));
-                            // v.setImageBitmap(getHighlightedImageBitmap(IqraActivity_Main.this, R.drawable.doroba,
-                            // ImageSettings.left_bound, ImageSettings.top_bound, ImageSettings.right_bound, ImageSettings.bottom_bound));
                             break;
                         case 3:
                             showImageDialog(R.drawable.dho);
                             playSound(R.raw.doo);
                             v.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.doroba_do_red));
-                            // v.setImageBitmap(getHighlightedImageBitmap(IqraActivity_Main.this, R.drawable.doroba,
-                            // ImageSettings.left_bound, ImageSettings.top_bound, ImageSettings.right_bound, ImageSettings.bottom_bound));
                             break;
                     }
                 }
