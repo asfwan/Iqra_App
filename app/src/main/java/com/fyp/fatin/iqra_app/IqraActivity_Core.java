@@ -1,13 +1,6 @@
 package com.fyp.fatin.iqra_app;
 
 import android.app.AlertDialog;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Rect;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -84,36 +77,5 @@ public class IqraActivity_Core extends ActionBarActivity {
         });
 
     }
-
-    public Bitmap getHighlightedImageBitmap(Context gContext, int gResId,float left,float top,float width,float height) {
-        Resources resources = gContext.getResources();
-        Bitmap bitmap =
-                BitmapFactory.decodeResource(resources, gResId);
-
-        Bitmap.Config bitmapConfig =
-                bitmap.getConfig();
-        // set default bitmap config if none
-        if(bitmapConfig == null) {
-            bitmapConfig = Bitmap.Config.ARGB_8888;
-        }
-        // resource bitmaps are imutable,
-        // so we need to convert it to mutable one
-        bitmap = bitmap.copy(bitmapConfig, true);
-
-        Canvas canvas = new Canvas(bitmap);
-        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-
-        // CUSTOMIZE YOUR COLOR HERE
-        paint.setARGB(200,500,500,300);
-
-
-        Rect bounds = new Rect();
-        int x = (bitmap.getWidth() - bounds.width())/2;
-        int y = (bitmap.getHeight() + bounds.height())/2;
-
-        canvas.drawRect(left,top,width,height,paint);
-        return bitmap;
-    }
-
 
 }
