@@ -10,20 +10,20 @@ import android.widget.LinearLayout;
  */
 public class IqraActivity_Main extends IqraActivity_Core {
 
-    int[] image_resources = new int[]{R.drawable.doroba, R.drawable.doroba, R.drawable.doroba};
-
+    // this is the main function - onCreate()
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // setup the cards
         setupCards();
 
     }
 
+    // the function definition for setupCards()
     private void setupCards() {
 
-        for (int i = 0; i < image_resources.length; i++) {
-            LinearLayout imageLayout = getImage(image_resources[i], ImageSettings.get3ComponentsOnTouchListener(new OnComponentTouchListener() {
+            LinearLayout imageLayout = getImage(R.drawable.doroba, ImageSettings.get3ComponentsOnTouchListener(new OnComponentTouchListener() {
                 @Override
                 public void onTouch(ImageView v, int componentCode) {
                     switch (componentCode) {
@@ -47,7 +47,6 @@ public class IqraActivity_Main extends IqraActivity_Core {
             }));
 
             mLayout.addView(imageLayout);
-        }
 
     }
 }
