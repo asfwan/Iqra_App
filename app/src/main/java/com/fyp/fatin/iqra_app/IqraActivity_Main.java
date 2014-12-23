@@ -23,30 +23,37 @@ public class IqraActivity_Main extends IqraActivity_Core {
     // the function definition for setupCards()
     private void setupCards() {
 
-            LinearLayout imageLayout = getImage(R.drawable.doroba, ImageSettings.get3ComponentsOnTouchListener(new OnComponentTouchListener() {
-                @Override
-                public void onTouch(ImageView v, int componentCode) {
-                    switch (componentCode) {
-                        case 1:
-                            showImageDialog(R.drawable.ba);
-                            playSound(R.raw.baa);
-                            v.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.doroba_ba_red));
-                            break;
-                        case 2:
-                            showImageDialog(R.drawable.ro);
-                            playSound(R.raw.raa);
-                            v.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.doroba_ro_red));
-                            break;
-                        case 3:
-                            showImageDialog(R.drawable.dho);
-                            playSound(R.raw.doo);
-                            v.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.doroba_do_red));
-                            break;
-                    }
-                }
-            }));
+
+        LinearLayout imageLayout = getImage(R.drawable.doroba, ImageSettings.get3ComponentsConvertedOnTouchListener(onDorobaTouchListener));
 
             mLayout.addView(imageLayout);
 
     }
+
+
+
+    OnComponentTouchListener onDorobaTouchListener = new OnComponentTouchListener() {
+        @Override
+        public void onTouch(ImageView v, int componentCode) {
+            switch (componentCode) {
+                case 1:
+                    showImageDialog(R.drawable.ba);
+                    playSound(R.raw.baa);
+                    v.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.doroba_ba_red));
+                    break;
+                case 2:
+                    showImageDialog(R.drawable.ro);
+                    playSound(R.raw.raa);
+                    v.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.doroba_ro_red));
+                    break;
+                case 3:
+                    showImageDialog(R.drawable.dho);
+                    playSound(R.raw.doo);
+                    v.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.doroba_do_red));
+                    break;
+            }
+        }
+    };
 }
+
+

@@ -14,7 +14,7 @@ public class ImageSettings {
     // the boundaries are auto-set when the touch events occur
     public static float top_bound=0, bottom_bound=0, left_bound=0, right_bound=0;
 
-    public static View.OnTouchListener getStandardComponentOnTouchListener(final int components, final OnComponentTouchListener onComponentTouchListener){
+    public static View.OnTouchListener getConvertedOnTouchListener(final int components, final OnComponentTouchListener onComponentTouchListener){
 
         // create te listener and then return it back
         return new View.OnTouchListener(){
@@ -60,13 +60,13 @@ public class ImageSettings {
     }
 
     // 4-letter word
-    public static View.OnTouchListener get4ComponentsOnTouchListener(final OnComponentTouchListener onComponentTouchListener){
-        return getStandardComponentOnTouchListener(4,onComponentTouchListener);
+    public static View.OnTouchListener get4ComponentsConvertedOnTouchListener(final OnComponentTouchListener onComponentTouchListener){
+        return getConvertedOnTouchListener(4, onComponentTouchListener);
     }
 
     // 3-letter word
-    public static View.OnTouchListener get3ComponentsOnTouchListener(final OnComponentTouchListener onComponentTouchListener){
-        return getStandardComponentOnTouchListener(3,onComponentTouchListener);
+    public static View.OnTouchListener get3ComponentsConvertedOnTouchListener(final OnComponentTouchListener onComponentTouchListener){
+        return getConvertedOnTouchListener(3, onComponentTouchListener);
     }
 
 
