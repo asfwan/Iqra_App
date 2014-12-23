@@ -24,9 +24,9 @@ public class IqraActivity_Main extends IqraActivity_Core {
     private void setupCards() {
 
 
-        LinearLayout imageLayout = getImage(R.drawable.doroba, ImageSettings.get3ComponentsConvertedOnTouchListener(onDorobaTouchListener));
+        LinearLayout imageLayout = getImageFromResource(R.drawable.doroba, ImageSettings.getOnTouchListenerFor3Components(onDorobaTouchListener));
 
-            mLayout.addView(imageLayout);
+        mLayout.addView(imageLayout);
 
     }
 

@@ -65,9 +65,8 @@ public class ImageSettings {
     }
 
     // 3-letter word
-    public static View.OnTouchListener get3ComponentsConvertedOnTouchListener(final OnComponentTouchListener onComponentTouchListener){
+    public static View.OnTouchListener getOnTouchListenerFor3Components(final OnComponentTouchListener onComponentTouchListener){
         return getConvertedOnTouchListener(3, onComponentTouchListener);
     }
-
 
 }

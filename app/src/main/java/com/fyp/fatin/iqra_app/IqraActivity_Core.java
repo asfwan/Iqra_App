@@ -44,7 +44,7 @@ public class IqraActivity_Core extends ActionBarActivity {
         return new AlertDialog.Builder(this).setView(view).create();
     }
 
-    public LinearLayout getImage(int res, View.OnTouchListener listener) {
+    public LinearLayout getImageFromResource(int res, View.OnTouchListener listener) {
 
         // inflate the layout of the image
         LinearLayout image = (LinearLayout) getLayoutInflater().inflate(R.layout.image, null);
