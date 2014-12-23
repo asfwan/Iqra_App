@@ -12,13 +12,7 @@ public class ImageSettings {
 
     // boundary settings for the image
     // the boundaries are auto-set when the touch events occur
-    public static float top_bound=0,bottom_bound=0,left_bound=0,right_bound=0;
-
-    // in case the context is needed
-    //    private static Context context = null;
-    //    public static void setContext(Context ct){
-    //        context = ct;
-    //    }
+    public static float top_bound=0, bottom_bound=0, left_bound=0, right_bound=0;
 
     public static View.OnTouchListener getStandardComponentOnTouchListener(final int components, final OnComponentTouchListener onComponentTouchListener){
 
