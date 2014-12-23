@@ -8,11 +8,14 @@ import android.widget.ImageView;
  * Created by asfwan on 12/6/14.
  *
  */
-public class ImageSettings {
+public class ImageManager {
 
-    // boundary settings for the image
-    // the boundaries are auto-set when the touch events occur
-    public static float top_bound=0, bottom_bound=0, left_bound=0, right_bound=0;
+    // a class for image settings
+    public static class ImageSettings{
+        // boundary settings for the image
+        // the boundaries are auto-set when the touch events occur
+        public static float top_bound=0, bottom_bound=0, left_bound=0, right_bound=0;
+    }
 
     public static View.OnTouchListener getConvertedOnTouchListener(final int components, final OnComponentTouchListener onComponentTouchListener){
 
@@ -35,8 +38,8 @@ public class ImageSettings {
                 int height = v.getHeight();
                 int offset_Y = height/4;
 
-                top_bound = 0;//offset_Y;
-                bottom_bound = height;//offset_Y*3;
+                ImageSettings.top_bound = 0;//offset_Y;
+                ImageSettings.bottom_bound = height;//offset_Y*3;
 
                 // deny touch event on upper side of the card
                 if(_Y<offset_Y) return false;
@@ -46,8 +49,8 @@ public class ImageSettings {
                 // the offset engine
                 for(int i=0;i<=components;i++){
                     if(offset_X*i>_X){
-                        left_bound = offset_X*(i-1)-offset_X/4;
-                        right_bound = offset_X*i-offset_X/4;
+                        ImageSettings.left_bound = offset_X*(i-1)-offset_X/4;
+                        ImageSettings.right_bound = offset_X*i-offset_X/4;
                         onComponentTouchListener.onTouch((ImageView)v,i);
                         break;
                     }
