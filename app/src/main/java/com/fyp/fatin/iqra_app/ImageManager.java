@@ -63,7 +63,7 @@ public class ImageManager {
     }
 
     // 3-letter word
-    public static View.OnTouchListener getOnTouchListenerFor3Components(final OnComponentTouchListener onComponentTouchListener){
+    public static View.OnTouchListener convertToOnTouchListener(final OnComponentTouchListener onComponentTouchListener){
         return getConvertedOnTouchListener(3, onComponentTouchListener);
     }
 
