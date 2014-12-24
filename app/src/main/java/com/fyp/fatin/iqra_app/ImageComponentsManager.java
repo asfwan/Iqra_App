@@ -8,7 +8,7 @@ import android.widget.ImageView;
  * Created by asfwan on 12/6/14.
  *
  */
-public class ImageManager {
+public class ImageComponentsManager {
 
     // a class for image settings
     public static class ImageSettings{

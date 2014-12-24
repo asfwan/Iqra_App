@@ -25,7 +25,7 @@ public class IqraActivity_Main extends IqraActivity_Core {
 
 
         LinearLayout imageLayout = getImageFromResource(R.drawable.doroba,
-                ImageManager.convertToOnTouchListener(onDorobaTouchListener));
+                ImageComponentsManager.convertToOnTouchListener(onDorobaTouchListener));
 
         mLayout.addView(imageLayout);
 
