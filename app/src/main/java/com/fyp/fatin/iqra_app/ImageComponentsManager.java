@@ -42,9 +42,9 @@ public class ImageComponentsManager {
                 ImageSettings.bottom_bound = height;//offset_Y*3;
 
                 // deny touch event on upper side of the card
-                if(_Y<offset_Y) return false;
+                //if(_Y<offset_Y) return false;
                 // deny touch event on lower side of the card
-                if(_Y>offset_Y*3) return false;
+                //if(_Y>offset_Y*3) return false;
 
                 // the offset engine
                 for(int i=0;i<=components;i++){
