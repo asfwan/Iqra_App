@@ -2,6 +2,8 @@ package com.fyp.fatin.iqra_app;
 
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -93,9 +95,11 @@ public class IqraActivity_Main extends IqraActivity_Core {
 
     }
 
-
-
-
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
 }
 
 
