@@ -1,9 +1,11 @@
 package com.fyp.fatin.iqra_app;
 
+import android.content.SharedPreferences;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -12,6 +14,9 @@ import android.widget.LinearLayout;
  * Created by asfwan on 12/7/14.
  */
 public class IqraActivity_Main extends IqraActivity_Core {
+
+    private static final int POPUP = 1;
+    private static final int HIGHLIGHT = 2;
 
     // this is the main function - onCreate()
     @Override
@@ -99,6 +104,25 @@ public class IqraActivity_Main extends IqraActivity_Core {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main,menu);
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()){
+            case R.id.change_option:
+                SharedPreferences sp = getSharedPreferences("iqra_app",MODE_PRIVATE);
+                String interaction = sp.getString("interaction","popup");
+                if(interaction.equals("popup")){
+                    sp.edit().putString("interaction","highlight").commit();
+                    item.setTitle("Enable Highlight");
+                }
+                else{
+                    sp.edit().putString("interaction","popup").commit();
+                    item.setTitle("Enable Popup");
+                }
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
 
