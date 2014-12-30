@@ -1,10 +1,9 @@
 package com.fyp.fatin.iqra_app;
 
-import android.content.SharedPreferences;
+import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -15,8 +14,9 @@ import android.widget.LinearLayout;
  */
 public class IqraActivity_Main extends IqraActivity_Core {
 
-    private static final int POPUP = 1;
-    private static final int HIGHLIGHT = 2;
+    private static final int OPTION_POPUP = 1;
+    private static final int OPTION_HIGHLIGHT = 2;
+    private static int OPTION_SELECTED = OPTION_POPUP;
 
     // this is the main function - onCreate()
     @Override
@@ -37,21 +37,22 @@ public class IqraActivity_Main extends IqraActivity_Core {
         OnComponentTouchListener onDorobaComponentTouchListener = new OnComponentTouchListener() {
             @Override
             public void onTouch(ImageView v, int componentCode) {
+                int option = getSelectedOption();
                 switch (componentCode) {
                     case 1:
-                        showImageDialog(R.drawable.ba);
+                        if(option==OPTION_POPUP) showImageDialog(R.drawable.ba);
                         playSound(R.raw.baa);
-                        v.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.doroba_ba_red));
+                        if(option==OPTION_HIGHLIGHT) v.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.doroba_ba_red));
                         break;
                     case 2:
-                        showImageDialog(R.drawable.ro);
+                        if(option==OPTION_POPUP) showImageDialog(R.drawable.ro);
                         playSound(R.raw.raa);
-                        v.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.doroba_ro_red));
+                        if(option==OPTION_HIGHLIGHT) v.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.doroba_ro_red));
                         break;
                     case 3:
-                        showImageDialog(R.drawable.dho);
+                        if(option==OPTION_POPUP) showImageDialog(R.drawable.dho);
                         playSound(R.raw.doo);
-                        v.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.doroba_do_red));
+                        if(option==OPTION_HIGHLIGHT) v.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.doroba_do_red));
                         break;
                 }
             }
@@ -66,26 +67,31 @@ public class IqraActivity_Main extends IqraActivity_Core {
 
     }
 
+    private int getSelectedOption() {
+        return OPTION_SELECTED;
+    }
+
     private View getZoharoCard() {
 
         OnComponentTouchListener onZoharoComponentTouchListener = new OnComponentTouchListener() {
             @Override
             public void onTouch(ImageView v, int componentCode) {
+                int option = getSelectedOption();
                 switch (componentCode) {
                     case 1:
-                        showImageDialog(R.drawable.ro);
+                        if(option==OPTION_POPUP) showImageDialog(R.drawable.ro);
                         playSound(R.raw.raa);
-                        v.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.dzaharo_ro_red));
+                        if(option==OPTION_HIGHLIGHT) v.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.dzaharo_ro_red));
                         break;
                     case 2:
-                        showImageDialog(R.drawable.ha);
+                        if(option==OPTION_POPUP) showImageDialog(R.drawable.ha);
                         playSound(R.raw.haa);
-                        v.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.dzaharo_ha_red));
+                        if(option==OPTION_HIGHLIGHT) v.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.dzaharo_ha_red));
                         break;
                     case 3:
-                        showImageDialog(R.drawable.dzo);
+                        if(option==OPTION_POPUP) showImageDialog(R.drawable.dzo);
                         playSound(R.raw.dzo);
-                        v.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.dzaharo_dzo_red));
+                        if(option==OPTION_HIGHLIGHT) v.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.dzaharo_dzo_red));
                         break;
                 }
             }
@@ -110,15 +116,20 @@ public class IqraActivity_Main extends IqraActivity_Core {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()){
             case R.id.change_option:
-                SharedPreferences sp = getSharedPreferences("iqra_app",MODE_PRIVATE);
-                String interaction = sp.getString("interaction","popup");
-                if(interaction.equals("popup")){
-                    sp.edit().putString("interaction","highlight").commit();
-                    item.setTitle("Enable Highlight");
+
+                //SharedPreferences sp = getSharedPreferences("iqra_app",MODE_PRIVATE);
+                //String interaction = sp.getString("interaction","popup");
+                if(OPTION_SELECTED == OPTION_POPUP){
+                    //sp.edit().putString("interaction","highlight").commit();
+                    //item.setTitle("Enable Highlight");
+                    OPTION_SELECTED = OPTION_HIGHLIGHT;
                 }
                 else{
-                    sp.edit().putString("interaction","popup").commit();
-                    item.setTitle("Enable Popup");
+                    //sp.edit().putString("interaction","popup").commit();
+                    //item.setTitle("Enable Popup");
+                    OPTION_SELECTED = OPTION_POPUP;
+                    startActivity(new Intent(IqraActivity_Main.this,IqraActivity_Main.class));
+                    finish();
                 }
                 break;
         }
